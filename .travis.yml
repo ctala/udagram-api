@@ -5,23 +5,17 @@ node_js:
 services:
   - docker
 
-# Pre-testing installs
-install:
-  - echo "nothing needs to be installed"
+before_install:
+  - docker --version # print the version for logging
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 # Scripts to be run such as tests
 before_script:
   - echo "no tests"
 
 script:
-  - docker --version # print the version for logging
-  - docker build -t udagram-api .
-  - docker tag udagram-api ctala/udagram-api:latest
-
-# Tasks to perform after the process is successful. Formatting the Docker username and password as below enables you to programmatically log in without having the password exposed in logs.
-after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push ctala/udagram-api
+  - docker build -t ctala/udagram-api .
+  - docker push ctala/udagram-api:latest
 
 # safelist
 branches:
