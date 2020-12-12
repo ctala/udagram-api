@@ -7,13 +7,13 @@ services:
 
 before_install:
   - docker --version # print the version for logging
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 # Scripts to be run such as tests
 before_script:
   - echo "no tests"
 
 script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t ctala/udagram-api .
   - docker push ctala/udagram-api:latest
 
