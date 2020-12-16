@@ -9,11 +9,29 @@
 
 ## About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+This code is part of the result for the Udacity project on microservices.
+
+### Flow
+* Push to master branch is executed by TravisCI.
+* TravisCI builds and publish to DockerHub
+
+### What did I do.
+* Created public Postgres database on RDS (Security group ingress only from same VPC and my personal IP address) 
+* Fixed / Audited Dependencies
+* Created Github Repo
+* Created DockerHub Repo
+* Created Travis Account
+* Configured Travis to create / push docker image to dockerhub repo
+* Created an EKS Cluster and the IAM permissions.
+* Created Node Group and IAM Permissions.
+* Created deployment and service yaml configuration files for K8s.
+* Create Node Cluster / t3.micro
+* Apply service and deployment k8s configuration.
 
 ## Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+* Github URL for API : https://github.com/ctala/udagram-api
+* Public DockerHub : https://hub.docker.com/repository/docker/ctala/udagram-api
 
 ### Prerequisites
 
@@ -43,4 +61,8 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Usage <a name = "usage"></a>
 
-Add notes about how to use the system.
+
+### Reminders.
+
+* kubectl apply -f service.yaml
+* kubectl apply -f deployment.yaml
