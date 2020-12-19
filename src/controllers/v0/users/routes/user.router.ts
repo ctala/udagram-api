@@ -5,14 +5,15 @@ import {AuthRouter} from './auth.router';
 
 const router: Router = Router();
 
-router.use('/auth', AuthRouter);
+router.use('/auth', AuthRouter);  
 
 router.get('/', async (req: Request, res: Response)=>{
-  console.log("users/");
+  console.log("/api/v0/users/");
   res.send("users/")
 });
 
 router.get('/:id', async (req: Request, res: Response) => {
+  console.log("/api/v0/users/:id");
   const {id} = req.params;
   const item = await User.findByPk(id);
   res.send(item);
